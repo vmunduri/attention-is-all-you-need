@@ -1,3 +1,4 @@
+```text
 ├── src/
 │   ├── __init__.py
 │   ├── data/
@@ -26,7 +27,6 @@
 │   └── inference/
 │       ├── __init__.py
 │       └── beam_search.py      # Greedy decoding and length-penalized beam search
-│
 │
 ├── config.py                   # Model dimensions (d_model, heads, dropout rates)
 ├── train.py                    # Main script orchestration entry point
