@@ -4,7 +4,7 @@
 │   ├── data/
 │   │   ├── __init__.py
 │   │   ├── vocabulary.py       # Vocab builders, encoders, decoders
-│   │   └── dataset.py          # Padding and batch stacking logic
+│   │   └── dataset.py           # Padding and batch stacking logic
 │   │
 │   ├── models/
 │   │   ├── __init__.py
