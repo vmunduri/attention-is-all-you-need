@@ -17,3 +17,35 @@ def compute_positional_div_term(d_model):
     frequency_divisor_const = (frequency_divisor_const * math.exp(-2 * math.log(10000) * (1/d_model)))
     return frequency_divisor_const
 
+
+def build_position_column(max_len):
+    return torch.arange(max_len, dtype=torch.float32).unsqueeze(1)
+
+
+def fill_even_indices_with_sin(pe, position, div_term):
+
+    #position is [L,1]
+    #div_term is (d_model//2,)
+    frequency = position * div_term #(L,d_model//2)
+    pe[:,0::2] = torch.sin(frequency)
+    return pe
+
+
+def fill_odd_indices_with_cos(pe, position, div_term):
+
+    frequency = position * div_term
+    pe[:,1::2] = torch.cos(frequency)
+    return pe
+
+def build_sinusoidal_positional_encoding(max_len, d_model):
+
+    div_term = compute_positional_div_term(d_model)
+    pe = torch.zeros(max_len, d_model)
+    position = build_position_column(max_len)
+    pe = fill_even_indices_with_sin(pe, position, div_term)
+    pe = fill_odd_indices_with_cos(pe, position, div_term)
+    return pe
+
+
+
+    
