@@ -3,6 +3,7 @@ import torch
 
 
 def scale_embeddings_by_sqrt_dmodel(embeddings, d_model):
+    #we need to scale our embeddings, so that the sinusoidal position weights wont dominate the embeddings distribution
     return embeddings * math.sqrt(d_model)
 
 
