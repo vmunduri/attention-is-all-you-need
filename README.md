@@ -9,7 +9,8 @@
 │   ├── models/
 │   │   ├── __init__.py
 │   │   ├── layers.py           # Positional encodings, FFN, LayerNorm, Dropout
-│   │   ├── attention.py        # Scaled dot-product and Multi-Head modules
+│   │   ├── attention.py        # Scaled dot-product
+│   │   ├── multi_head_attention.py    # Multi-Head modules
 │   │   ├── encoder.py          # EncoderLayer and stacked assembly
 │   │   ├── decoder.py          # DecoderLayer and stacked assembly
 │   │   └── transformer.py      # Full Seq2Seq wrapper, tying embeddings
