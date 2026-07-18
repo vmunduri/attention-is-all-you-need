@@ -14,6 +14,7 @@
 │   │   ├── encoder.py          # EncoderLayer and stacked assembly
 │   │   ├── decoder.py          # DecoderLayer and stacked assembly
 │   │   └── transformer.py      # Full Seq2Seq wrapper, tying embeddings
+│   │   └── feedforward.py
 │   │
 │   ├── optim/
 │   │   ├── __init__.py
