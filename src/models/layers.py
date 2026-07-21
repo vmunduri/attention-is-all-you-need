@@ -48,4 +48,6 @@ def build_sinusoidal_positional_encoding(max_len, d_model):
 
 
 
-    
+def add_positional_encoding_to_embeddings(embedded_batch, positional_encoding):
+
+    return embedded_batch + positional_encoding[: embedded_batch.shape[1], :]

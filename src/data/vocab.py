@@ -1,4 +1,5 @@
 from typing import List, Tuple
+import torch
 
 class Vocab:
 
@@ -65,13 +66,18 @@ class Decode:
     
 def pad_id_sequence(ids:List[int], max_len:int, pad_id:int) -> List[int]:
     
-    ids_length = len(ids)
-    if max_len < ids_length:
-        ids = ids[:max_len]
-    elif max_len > ids_length:
-        for i in range((max_len - ids_length)):
-            ids.append(pad_id)
-    else:
-        return ids
+    if isinstance(ids, torch.Tensor):
+        ids = ids.tolist()
+
+    is_oned = len(ids)==0 or not isinstance(ids[0], list)
+    if is_oned:
+        ids = [ids]
+
+    padded_ids = []
+    for seq in ids:
+        if (max_len > len(seq)):
+            padded_ids.append(seq + ([pad_id] * (max_len - len(seq))))
+        else:
+            padded_ids.append(seq[:max_len])
     
-    return ids
+    return padded_ids[0] if is_oned else padded_ids
